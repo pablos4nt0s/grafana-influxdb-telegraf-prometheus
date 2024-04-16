@@ -1,0 +1,20 @@
+# datasources.yaml
+apiVersion: 1
+
+datasources:
+  - name: influxdb
+    type: influxdb
+    url: http://influxdb:8086
+    access: proxy
+    database: telegraf
+    #user: telegraf
+    #password: admin123
+    #basicAuth: true
+    token: JnIT2Lv34XeC30EK5c5gAg1hEQhHw65VO6R7EWB6NZMlIbZBCtLaXYVevFb2UQ9toFZ0vBtWhKdcRCQ94GfxLA==
+    editable: true
+    httpHeaderName1: "Authorization"
+    httpHeaderValue1: JnIT2Lv34XeC30EK5c5gAg1hEQhHw65VO6R7EWB6NZMlIbZBCtLaXYVevFb2UQ9toFZ0vBtWhKdcRCQ94GfxLA==
+  - name: prometheus
+    type: prometheus
+    url: http://prometheus:9090
+    access: proxy

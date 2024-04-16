@@ -1,0 +1,91 @@
+networks:
+  public: {}
+  private: {}
+
+volumes:
+  grafana_lib: {}
+
+services:
+  influxdb:
+    image: influxdb:2.6.1-alpine
+    env_file: configuration.env
+    container_name: influxdb
+    restart: always
+    ports:
+      - "8086:8086"
+    networks:
+      - public
+      - private
+    volumes:
+      - ./data/influxdb:/var/lib/influxdb2
+
+  grafana:
+    image: grafana/grafana
+    env_file: configuration.env
+    container_name: grafana
+    ports:
+      - "3001:3000"
+    networks:
+      - public
+      - private
+    volumes:
+      - grafana_lib:/var/lib/grafana
+      - ./grafana/dashboards:/etc/grafana/provisioning/dashboards
+      - ./grafana/datasources:/etc/grafana/provisioning/datasources
+    depends_on:
+      - influxdb
+
+  telegraf:
+    image: telegraf:1.28.2-alpine
+    env_file: configuration.env
+    container_name: telegraf
+    restart: always
+    network_mode: host
+    volumes:
+      - ./telegraf.conf:/etc/telegraf/telegraf.conf:ro
+    depends_on:
+      - influxdb
+
+  prometheus:
+    image: prom/prometheus
+    container_name: prometheus
+    volumes:
+      - ./prometheus/prometheus.yml:/etc/prometheus/prometheus.yml
+    networks:
+      - private
+    command: "--config.file=/etc/prometheus/prometheus.yml --storage.tsdb.path=/prometheus"
+    ports:
+      - 9091:9090
+    depends_on:
+      - node_exporter
+
+  node_exporter:
+    image: prom/node-exporter:latest
+    container_name: node_exporter
+    env_file: configuration.env
+    volumes:
+      - ./data/node_exporter/justrun.py:/justrun.py:rw
+      - ./data/node_exporter/hmon:/hmon:rw
+      - ./data/node_exporter/smoothlogging:/smoothlogging:rw
+      - ./data/node_exporter/textfile_collector:/var/lib/node_exporter/textfile_collector/
+    networks:
+      - public
+      - private
+    expose:
+      - 9100
+    ports:
+      - 9101:9100
+
+  alertmanager:
+    image: prom/alertmanager
+    container_name: alertmanager
+    ports:
+      - 9093:9093
+    volumes:
+      - ./alertmanager/:/etc/alertmanager/
+    networks:
+      - private
+    restart: unless-stopped
+    command:
+      - "--config.file=/etc/alertmanager/config.yml"
+      - "--storage.path=/alertmanager"
