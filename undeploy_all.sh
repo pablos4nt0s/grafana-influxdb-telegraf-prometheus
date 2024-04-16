@@ -1,4 +1,3 @@
-# START docker-compose
 do_cleanup () {
 	docker-compose down
 
