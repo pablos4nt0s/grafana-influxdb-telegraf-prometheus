@@ -3,7 +3,7 @@ networks:
   private: {}
 
 volumes:
-  grafana_lib: {}
+  grafana_data: {}
 
 services:
   influxdb:
@@ -68,7 +68,7 @@ services:
       - public
       - private
     volumes:
-      - grafana_lib:/var/lib/grafana
+      - grafana_data:/var/lib/grafana
       - ./grafana/dashboards:/etc/grafana/provisioning/dashboards
       - ./grafana/datasources:/etc/grafana/provisioning/datasources
     depends_on:
