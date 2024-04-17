@@ -60,7 +60,7 @@ services:
       - influxdb
 
   grafana:
-    image: grafana/grafana:latest
+    image: grafana/grafana-enterprise
     env_file: configuration.env
     container_name: grafana
     ports:
