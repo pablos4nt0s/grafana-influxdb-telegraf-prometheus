@@ -19,7 +19,7 @@ Deploying and configuring this monitoring solution is quick and straightforward,
 $ ./deploy_all.sh
 ```
 
-Once deployed, you can access the monitoring dashboard at http://localhost:3001/.
+Once deployed, you can access the monitoring dashboard at http://localhost:3000/.
 
 ## Configuration:
 

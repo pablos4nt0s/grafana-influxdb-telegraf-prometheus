@@ -3115,7 +3115,7 @@
     ]
   },
   "timezone": "browser",
-  "title": "Docker and system monitoring",
+  "title": "Docker Metrics",
   "uid": "adixel80ylblsb",
   "version": 1,
   "weekStart": ""
