@@ -13,7 +13,7 @@ This repository offers a comprehensive monitoring solution that's easily deploya
 
 Deploying and configuring this monitoring solution is quick and straightforward, requiring minimal setup time.
 
-# Prerequisites
+## Prerequisites
 
 You need to have [Docker](https://www.docker.com/get-started) and [Docker Compose](https://docs.docker.com/compose/install/) installed.
 
