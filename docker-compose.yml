@@ -7,6 +7,17 @@ volumes:
   influxdb_data: {}
 
 services:
+  app-example-api:
+    container_name: app-example-api
+    build:
+      context: ./app/
+    ports:
+      - "8080:8080"
+    expose:
+      - "8080"
+    networks:
+      - public
+      - private
   influxdb:
     image: influxdb:alpine
     env_file: configuration.env

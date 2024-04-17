@@ -7,6 +7,7 @@ This repository offers a comprehensive monitoring solution that's easily deploya
 - **Node Exporter**: A tool for exposing system metrics to Prometheus.
 - **Telegraf**: A monitoring agent capable of gathering metrics from diverse sources.
 - **InfluxDB**: A reliable timeseries database for persistent storage of metrics data.
+- **Node.js Application**: App example using Prometheus client for Node.js.
 
 # Getting Started
 
