@@ -7,7 +7,6 @@ This repository offers a comprehensive monitoring solution that's easily deploya
 - **Node Exporter**: A tool for exposing system metrics to Prometheus.
 - **Telegraf**: A monitoring agent capable of gathering metrics from diverse sources.
 - **InfluxDB**: A reliable timeseries database for persistent storage of metrics data.
-- **Alertmanager**: A component responsible for handling alerts and notifications.
 
 # Getting Started
 
@@ -20,19 +19,6 @@ $ ./deploy_all.sh
 ```
 
 Once deployed, you can access the monitoring dashboard at http://localhost:3000/.
-
-## Configuration:
-
-To ensure seamless operation, follow these steps to configure Grafana:
-
-1. Open Grafana Data Sources.
-2. Modify the InfluxDB configuration with the following details:
-   - HTTP Headers: Add a custom HTTP Header with the following details:
-     - Header: Authorization
-     - Value: Token [configuration_env.DOCKER_INFLUXDB_INIT_ADMIN_TOKEN]
-3. Click on "Save & Test".
-
-Your setup is now complete and ready for use!
 
 ## Undeployment:
 

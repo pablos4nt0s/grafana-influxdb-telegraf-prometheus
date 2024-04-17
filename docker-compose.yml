@@ -74,17 +74,3 @@ services:
       - ./grafana/datasources:/etc/grafana/provisioning/datasources
     depends_on:
       - influxdb
-
-  alertmanager:
-    image: prom/alertmanager
-    container_name: alertmanager
-    ports:
-      - 9093:9093
-    volumes:
-      - ./alertmanager/:/etc/alertmanager/
-    networks:
-      - private
-    restart: unless-stopped
-    command:
-      - "--config.file=/etc/alertmanager/config.yml"
-      - "--storage.path=/alertmanager"
