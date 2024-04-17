@@ -61,8 +61,8 @@
         "overrides": []
       },
       "gridPos": {
-        "h": 3,
-        "w": 24,
+        "h": 6,
+        "w": 10,
         "x": 0,
         "y": 0
       },
@@ -179,10 +179,10 @@
         "thresholdLine": false
       },
       "gridPos": {
-        "h": 7,
-        "w": 24,
-        "x": 0,
-        "y": 3
+        "h": 6,
+        "w": 14,
+        "x": 10,
+        "y": 0
       },
       "id": 7,
       "legend": {
@@ -493,7 +493,7 @@
         "h": 7,
         "w": 24,
         "x": 0,
-        "y": 10
+        "y": 6
       },
       "id": 17,
       "options": {
@@ -745,7 +745,7 @@
         "h": 7,
         "w": 24,
         "x": 0,
-        "y": 17
+        "y": 13
       },
       "id": 13,
       "options": {
@@ -849,7 +849,7 @@
         "h": 7,
         "w": 24,
         "x": 0,
-        "y": 24
+        "y": 20
       },
       "id": 9,
       "options": {
@@ -952,7 +952,7 @@
         "h": 7,
         "w": 24,
         "x": 0,
-        "y": 31
+        "y": 27
       },
       "id": 19,
       "options": {
@@ -1067,7 +1067,7 @@
         "h": 7,
         "w": 24,
         "x": 0,
-        "y": 38
+        "y": 34
       },
       "id": 14,
       "options": {
@@ -1196,7 +1196,7 @@
         "h": 7,
         "w": 24,
         "x": 0,
-        "y": 45
+        "y": 41
       },
       "id": 18,
       "options": {
@@ -1295,8 +1295,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               },
               {
                 "color": "red",
@@ -1312,7 +1311,7 @@
         "h": 7,
         "w": 24,
         "x": 0,
-        "y": 52
+        "y": 48
       },
       "id": 22,
       "options": {
@@ -1397,8 +1396,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               },
               {
                 "color": "red",
@@ -1427,7 +1425,7 @@
         "h": 7,
         "w": 24,
         "x": 0,
-        "y": 59
+        "y": 55
       },
       "id": 12,
       "options": {
@@ -1526,8 +1524,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               },
               {
                 "color": "red",
@@ -1543,7 +1540,7 @@
         "h": 7,
         "w": 24,
         "x": 0,
-        "y": 66
+        "y": 62
       },
       "id": 21,
       "options": {
@@ -1626,8 +1623,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               },
               {
                 "color": "red",
@@ -1656,7 +1652,7 @@
         "h": 7,
         "w": 24,
         "x": 0,
-        "y": 73
+        "y": 69
       },
       "id": 23,
       "options": {
@@ -1779,8 +1775,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               },
               {
                 "color": "red",
@@ -1796,7 +1791,7 @@
         "h": 7,
         "w": 24,
         "x": 0,
-        "y": 80
+        "y": 76
       },
       "id": 24,
       "options": {
@@ -1870,7 +1865,7 @@
     ]
   },
   "time": {
-    "from": "now-30m",
+    "from": "now-5m",
     "to": "now"
   },
   "timepicker": {
