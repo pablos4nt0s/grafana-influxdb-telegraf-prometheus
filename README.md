@@ -2,8 +2,6 @@
 
 This repository aims to serve as a playground for monitoring using popular tools, providing a comprehensive solution that's easily deployable. It integrates several essential components:
 
-This repository offers a comprehensive monitoring solution that's easily deployable, integrating several essential components:
-
 - **Grafana**: A versatile frontend for monitoring and alert management.
 - **Prometheus**: A robust monitoring solution designed to pull metrics from various exporters.
 - **Node Exporter**: A tool for exposing system metrics to Prometheus.
