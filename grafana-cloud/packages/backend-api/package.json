@@ -1,0 +1,25 @@
+{
+  "name": "team-feedback-backend-api",
+  "version": "0.0.0-alpha",
+  "scripts": {
+    "start": "npx ts-node src/index.ts",
+    "dev": "nodemon --watch src src/index.ts"
+  },
+  "dependencies": {
+    "@fastify/cors": "^9.0.1",
+    "@opentelemetry/exporter-trace-otlp-http": "^0.50.0",
+    "@opentelemetry/sdk-metrics": "^1.23.0",
+    "@opentelemetry/sdk-trace-base": "^1.23.0",
+    "@opentelemetry/sdk-trace-node": "^1.23.0",
+    "dotenv": "^16.4.5",
+    "fastify": "^4.26.2",
+    "fastify-metrics": "^11.0.0",
+    "mongoose": "^8.3.2"
+  },
+  "devDependencies": {
+    "@types/node": "^20.12.7",
+    "nodemon": "^3.1.0",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.4.5"
+  }
+}

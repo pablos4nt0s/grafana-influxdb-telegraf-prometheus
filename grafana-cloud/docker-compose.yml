@@ -1,0 +1,48 @@
+version: '3'
+
+networks:
+  grafana:
+
+services:
+  mongo:
+    build: ./mongo
+    restart: always
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: ${MONGO_INITDB_ROOT_USERNAME}
+      MONGO_INITDB_ROOT_PASSWORD: ${MONGO_INITDB_ROOT_PASSWORD}
+      MONGO_INITDB_DATABASE: team-feedback
+    ports:
+      - 27017:27017
+    networks:
+      - grafana
+
+  backend-api:
+    build: ./packages/backend-api
+    depends_on:
+      - mongo
+    ports:
+      - 3001:3001
+    networks:
+      - grafana
+
+  web-app:
+    build: ./packages/web-app
+    depends_on:
+      - backend-api
+    ports:
+      - 3000:80
+    networks:
+      - grafana
+
+  alloy:
+    image: grafana/alloy
+    depends_on:
+      - web-app
+    volumes:
+      - ${PWD}/config.alloy:/etc/alloy/config.alloy
+    env_file:
+      - .env
+    ports:
+      - 4317:4317
+    networks:
+      - grafana
