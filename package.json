@@ -1,0 +1,17 @@
+{
+  "name": "team-feedback",
+  "version": "0.0.1-alpha",
+  "description": "A simple web app to be used as a playground for studying Grafana and its related tools.",
+  "scripts": {
+    "dev": "concurrently --names \"BACKEND-API,WEB-APP\" -c \"bgGreen.bold,bgBlue.bold\" \"cd packages/backend-api && npm run dev\" \"cd packages/web-app && npm run dev\"",
+    "start": "docker-compose up",
+    "teardown": "./bin/teardown.sh"
+  },
+  "workspaces": [
+    "packages/backend-api",
+    "packages/web-app"
+  ],
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  }
+}

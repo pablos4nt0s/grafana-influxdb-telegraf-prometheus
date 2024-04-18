@@ -1,0 +1,36 @@
+include:
+  - grafana/${GRAFANA_OPTION}/docker-compose.yml
+
+networks:
+  grafana:
+
+services:
+  mongo:
+    build: ./mongo
+    restart: always
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: ${MONGO_INITDB_ROOT_USERNAME}
+      MONGO_INITDB_ROOT_PASSWORD: ${MONGO_INITDB_ROOT_PASSWORD}
+      MONGO_INITDB_DATABASE: team-feedback
+    ports:
+      - 27017:27017
+    networks:
+      - grafana
+
+  backend-api:
+    build: ./packages/backend-api
+    depends_on:
+      - mongo
+    ports:
+      - 3001:3001
+    networks:
+      - grafana
+
+  web-app:
+    build: ./packages/web-app
+    depends_on:
+      - backend-api
+    ports:
+      - 8080:80
+    networks:
+      - grafana
