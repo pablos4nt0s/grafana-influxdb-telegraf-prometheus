@@ -1,4 +1,6 @@
-# Monitoring Solution
+# Monitoring Playground for Grafana
+
+This repository aims to serve as a playground for monitoring using popular tools, providing a comprehensive solution that's easily deployable. It integrates several essential components:
 
 This repository offers a comprehensive monitoring solution that's easily deployable, integrating several essential components:
 
