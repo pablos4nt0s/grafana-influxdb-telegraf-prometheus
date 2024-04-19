@@ -9,6 +9,8 @@ This repository aims to serve as a playground for monitoring using popular tools
 - **InfluxDB**: A reliable timeseries database for persistent storage of metrics data.
 - **Node.js Application**: Sample app utilizing the Prometheus client for Node.js.
 
+![alt text](image.png)
+
 # Getting Started
 
 Deploying and configuring this monitoring solution is quick and straightforward, requiring minimal setup time.
