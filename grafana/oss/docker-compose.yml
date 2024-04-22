@@ -1,0 +1,76 @@
+networks:
+  public: {}
+  private: {}
+
+volumes:
+  grafana_data: {}
+  influxdb_data: {}
+
+services:
+  influxdb:
+    image: influxdb:alpine
+    env_file: ../../.env
+    container_name: influxdb
+    restart: always
+    ports:
+      - 8086:8086
+    networks:
+      - public
+      - private
+    volumes:
+      - influxdb_data:/var/lib/influxdb2
+
+  node_exporter:
+    image: prom/node-exporter:latest
+    container_name: node_exporter
+    env_file: ../../.env
+    volumes:
+      - ./data/node_exporter/justrun.py:/justrun.py:rw
+      - ./data/node_exporter/hmon:/hmon:rw
+      - ./data/node_exporter/smoothlogging:/smoothlogging:rw
+      - ./data/node_exporter/textfile_collector:/var/lib/node_exporter/textfile_collector/
+    networks:
+      - public
+      - private
+    ports:
+      - 9100:9100
+
+  prometheus:
+    image: prom/prometheus:latest
+    container_name: prometheus
+    volumes:
+      - ./prometheus/prometheus.yml:/etc/prometheus/prometheus.yml
+    networks:
+      - private
+    command: "--config.file=/etc/prometheus/prometheus.yml --storage.tsdb.path=/prometheus"
+    ports:
+      - 9090:9090
+    depends_on:
+      - node_exporter
+
+  telegraf:
+    image: telegraf:latest
+    env_file: ../../.env
+    container_name: telegraf
+    restart: always
+    network_mode: host
+    volumes:
+      - ./telegraf/telegraf.conf:/etc/telegraf/telegraf.conf:ro
+    depends_on:
+      - influxdb
+
+  grafana:
+    image: grafana/grafana-enterprise
+    env_file: ../../.env
+    container_name: grafana
+    ports:
+      - 3000:3000
+    networks:
+      - public
+      - private
+    volumes:
+      - grafana_data:/var/lib/grafana
+      - ./dashboards:/etc/grafana/provisioning/dashboards
+      - ./datasources:/etc/grafana/provisioning/datasources
+    depends_on:
+      - influxdb

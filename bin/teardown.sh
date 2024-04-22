@@ -1,7 +1,7 @@
 do_cleanup () {
 	docker-compose down
 
-	rm -rf ./data
+	rm -rf grafana/oss/data
 
 	for d in $(docker volume ls -qf dangling=true); do 
 		docker volume rm $d

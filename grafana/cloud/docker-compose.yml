@@ -1,0 +1,16 @@
+networks:
+  grafana:
+
+services:
+  alloy:
+    image: grafana/alloy
+    depends_on:
+      - web-app
+    volumes:
+      - ${PWD}/grafana/cloud/config.alloy:/etc/alloy/config.alloy
+    env_file:
+      - ../../.env
+    ports:
+      - 4317:4317
+    networks:
+      - grafana
